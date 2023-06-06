@@ -126,6 +126,12 @@ class PeliculasController extends Controller
         }
     }
 
+    public function invertir(Request $request) {
+        $pelicula = $request->pelicula;
+        $usuario = $request->usuario;
+        $cantidad = $request->amount;
+        $pelicula->usuarios()->attach($usuario,$cantidad, ['created_at' => Carbon::now()]);
+    }
     /**
      * Show the form for editing the specified resource.
      */

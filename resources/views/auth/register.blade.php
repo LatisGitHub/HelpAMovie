@@ -36,6 +36,12 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+        <div>
+            <x-input-label for="descripcion" :value="__('Description')" />
+            <x-text-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion" :value="old('descripcion')" required
+                autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('descripcion')" class="mt-2" />
+        </div>
 
         <div class="mt-4">
             <x-input-label for="imagen" :value="__('IMAGEN')" />
@@ -46,21 +52,21 @@
         <div class="mt-4">
             <x-input-label for="genero" :value="__('Genre')" />
             <select name="genero" class="block mt-1 w-full">
-                <option value="Accion">Accion</option>
-                <option value="Aventura">Aventura</option>
-                <option value="CienciaFiccion">Ciencia Ficcion</option>
-                <option value="Comedia">Comedia</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="ScienceFiction">Science Fiction</option>
+                <option value="Comedy">Comedy</option>
                 <option value="Drama">Drama</option>
-                <option value="Fantasia">Fantasia</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Fantasy">Romance</option>
             </select>
         </div>
+        
         <div class="mt-4">
             <input type="radio" id="html" name="rol" value="productor">
-            <label for="html">PRODUCTOR</label><br>
+            <label for="html">PRODUCER</label><br>
             <input type="radio" id="html" name="rol" value="usuario">
-            <label for="html">INVERSOR</label><br>
-            <input type="radio" id="html" name="rol" value="actor">
-            <label for="html">ACTOR</label><br>
+            <label for="html">ACTOR/INVESTOR</label><br>
         </div>
 
         <div class="flex items-center justify-end mt-4">

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('imagen')->nullable();
             $table->enum('genero',['Accion','Aventura','CienciaFiccion', 'Comedia', 'Drama', 'Fantasia'])->nullable();
             $table->string('rol')->default('usuario');
+            $table->string('descripcion')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

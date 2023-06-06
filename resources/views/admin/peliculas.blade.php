@@ -2,6 +2,7 @@
 
 
 @section('main')
+    <link rel="stylesheet" href="{{ asset('css2/peliculas.css') }}">
     <div class="container">
         <div class="form-container mt-3" style="margin-left: 25%">
             <form method="POST" action='/pelicula/buscarPelicula' enctype="multipart/form-data">
@@ -11,46 +12,57 @@
                 <button class="btn btn-dark" type="submit">BUSCAR</button>
             </form>
         </div>
-        <style>
-            .form-container {
-                display: flex;
-                gap: 20px;
-            }
-        </style>
         <h1 class="text-dark mt-5" style="text-align: center"> PELICULAS </h1>
         <a href="/peliculas/nuevo/nuevo"><button class="btn btn-secondary mb-5">Nueva peli</button></a>
         <div class="row mb-5">
             @foreach ($peliculas as $pelicula)
-                <div class="card p-3 m-3" style="width: 25rem;">
-                    <img class="card-img-top img-responsive" height="320px" src="{{ asset($pelicula->imagen) }}" />
-                    <a class="btn btn-dark mt-3" href="/peliculas/{{ $pelicula->id }}">DETALLE</a>
-                    <a class="btn btn-dark mt-3" href="/peliculas/{{ $pelicula->id }}">INVIERTE</a>
-
-                    <div class="card-body">
-                        <h5 class="card-title">{{ strtoupper($pelicula->titulo) }}</h5>
-                        <p class="card-text">{{ $pelicula->sinopsis }}</p>
-                        <p class="card-text">{{ $pelicula->objetivo }}</p>
-                        <p class="card-text">{{ $pelicula->cantidad }}</p>
-                        <p class="card-text">{{ $pelicula->likes }}</p>
-                        <p class="card-text">{{ $pelicula->dislikes }}</p>
-                        <td class="text-center"> <a class="text-danger" href="/peliculas/{{ $pelicula->id }}/borrar"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                        </svg></a>
-                        <form action=" {{ route('payment') }}" method="post">
-                        @csrf
-                        <input type="number" name="amount">
-                        <button type="submit">
-                        pay with paypal
-                        </button>
+                <div class="movie-card d-inline-block">
+                    <div class="container2">
+                        <div class="cover" style="background: url({{ $pelicula->imagen }});">
+                            <div class="columntag">
+                                <div class="tag1">Adventure</div>
+                                <div class="tag2">Fantasy</div>
+                                <div class="tag3">Drama</div>
+                            </div>
+                            <div class="menu">
+                                <div class="title">{{ $pelicula->titulo }}</div>
+                                <div class="rating">
+                                    IMDb <span class="fa fa-star"></span><span> 9.5/10</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <div class="cast">
+                                <h2>Cast:</h2>
+                                @php
+                                    $usuarios = $pelicula->usuarios()->get();
+                                @endphp
+                                @foreach ($usuarios as $usuario)
+                                    <a href="#" data-tooltip="{{ $usuario->name }}" data-placement="top">
+                                        <img src="{{ $usuario->imagen }}" alt="avatar1" class="rounded" width="50px" height="50px" />
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="text">
+                            {{$pelicula->sinopsis}}
+                        </div>
+                        <div class="guide">
+                            <a href="#">Episode Guide<br> 68 episodes</a>
+                            <a class="btn btn-dark mt-3" href="/peliculas/{{ $pelicula->id }}">DETALLE</a>
+                            <a class="btn btn-dark mt-3" href="/peliculas/{{ $pelicula->id }}">INVIERTE</a>
+                        </div>
+                        <form action="{{ route('payment') }}" method="post">
+                            @csrf
+                            <input type="number" name="amount">
+                            <button type="submit">
+                                pay with paypal
+                            </button>
                         </form>
                     </div>
                 </div>
             @endforeach
             {{ $peliculas->links() }}
         </div>
-
     </div>
 @endsection

@@ -19,7 +19,7 @@ class ProfileController extends Controller
     {   
         if (isset(Auth::user()->rol)) {
             if (Auth::user()->rol == 'admin') {
-                return view('admin.usuarios', ['usuarios' => User::paginate(4)]);
+                return view('admin.usuarios', ['usuarios' => User::paginate(6)]);
             } else {
                 return view('web.usuarios', ['usuarios' => User::paginate(6)]);
             }

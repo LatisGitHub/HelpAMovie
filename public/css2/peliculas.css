@@ -1,0 +1,233 @@
+@import url(https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.movie-card {
+    padding: 40px 0;
+    color: #A9A8A3;
+}
+.movie-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+.container2 {
+    width: 70%;
+    height: 640px;
+
+
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #F0F0ED;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+}
+
+.cover {
+
+
+    height: 365px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.cover:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform: skewX(20deg);
+    border-bottom-left-radius: 20px;
+    transform-origin: 0 0;
+}
+
+h2 {
+    font-size: 19px;
+
+}
+
+a {
+    text-decoration: none;
+    color: #5C7FB8
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.menu {
+    text-align: center;
+    padding: 65px 0 0 220px;
+    z-index: 1;
+
+}
+
+.fa {
+    color: #ffea00;
+}
+
+.rating {}
+
+.title {
+    color: white;
+    font-size: 44px;
+}
+
+.columntag {
+    padding-top: 200px;
+}
+
+.tag1,
+.tag2,
+.tag3 {
+    background: white;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 16px;
+    padding: 3px 8px;
+    float: left;
+    position: relative;
+}
+
+.tag1 {
+    margin-left: 27px;
+}
+
+.tag2 {
+    margin-top: 25px;
+    margin-left: -50px;
+}
+
+.tag3 {
+    margin-top: 50px;
+    margin-left: -45px;
+}
+
+.tag1:hover {
+    background: #ddd;
+}
+
+.tag2:hover {
+    background: #ddd;
+}
+
+.tag3:hover {
+    background: #ddd;
+}
+
+.info {
+    clear: both;
+}
+
+.cast {
+    float: left;
+    width: 250px;
+    margin-left: 10px;
+    padding-top: 35px;
+}
+
+.cast img {
+    border-radius: 50px;
+    cursor: pointer;
+    border: 3px solid white;
+
+}
+
+.cast img:hover {
+    opacity: 0.6;
+}
+
+.cast a:hover {
+    text-decoration: none;
+}
+
+.text {
+    float: right;
+    width: 350px;
+    padding-top: 50px;
+}
+
+.guide {
+    text-align: left;
+    padding-top: 200px;
+    padding-left: 10px;
+}
+
+.guide a {
+    color: #A9A8A3;
+}
+
+.guide a:hover {
+    color: #bdbdbd;
+}
+
+
+a[data-tooltip] {
+    position: relative;
+}
+
+a[data-tooltip]::before,
+a[data-tooltip]::after {
+    position: absolute;
+    display: none;
+    opacity: 0.85;
+}
+
+a[data-tooltip]::before {
+    /*
+    * using data-tooltip instead of title so we
+    * don't have the real tooltip overlapping
+    */
+    content: attr(data-tooltip);
+    background: #000;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px;
+    border-radius: 5px;
+    /* we don't want the text to wrap */
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+a[data-tooltip]::after {
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    content: '';
+}
+
+a[data-tooltip]:hover::before,
+a[data-tooltip]:hover::after {
+    display: block;
+}
+
+/** positioning **/
+
+a[data-tooltip][data-placement="top"]::before {
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 40px;
+}
+
+a[data-tooltip][data-placement="top"]::after {
+    border-top-color: #000;
+    border-bottom: none;
+    bottom: 50px;
+    left: 20px;
+    margin-bottom: 4px;
+}
