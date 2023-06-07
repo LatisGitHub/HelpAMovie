@@ -90,7 +90,7 @@ class ProfileController extends Controller
     {
         $users = DB::table('users')
             ->where('name', 'like', '%'. $request->input('usuario') . '%')->paginate(6);
-
+        
         if (Auth::user()->rol == "admin") {
             return view('admin.usuarios', ['usuarios' => $users]);
         } else {

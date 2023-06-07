@@ -3,30 +3,36 @@
 
 @section('main')
     <link rel="stylesheet" href="{{ asset('css2/usuarios.css') }}">
-
-    <div class="container">
-        <div class="form-container" style="margin-left: 25%;margin-top: 10%">
-            <form method="POST" action='/usuario/buscarUsuario' enctype="multipart/form-data">
-                @csrf
-                <label for="plataforma" style="font-weight: bold">USUARIO</label>
-                <input type="text" name="usuario">
-                <button class="btn btn-dark" type="submit">BUSCAR</button>
-            </form>
+    <nav class="navbar navbar-expand-lg navbar-light " style="border-top: 1px solid rgb(209, 209, 209);border-bottom: 1px solid rgb(209, 209, 209)">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 73%">
+                <form class="d-flex" method="POST" action='/usuario/buscarUsuario'  enctype="multipart/form-data">
+                    @csrf
+                    <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
+                        name="usuario">
+                    <button class="btn btn-outline-secondary" type="submit"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg></button>
+                </form>
+            </div>
         </div>
-        <style>
-            .form-container {
-                display: flex;
-                gap: 20px;
-            }
-        </style>
-        <h1 class="text-dark mt-5" style="text-align: center"> Our Users </h1>
-        <div class="container center-div">
+    </nav>
+    <div class="container">
+        <h1 style="text-decoration: underline" class="mt-5">Our Cast</h1>
+        <h4>Discover a pool of talented and motivated actors ready to embark on new projects and bring characters to life.</h4>
+        <div class="container center-div mt-5">
             <div class="row d-flex justify-content-center align-items-center mb-5">
                 @foreach ($usuarios as $usuario)
                     @if ($usuario->rol != 'admin')
                         <figure class="snip1515 hover-effect">
                             <div class="profile-image">
-                                <img src="{{ $usuario->imagen }}" alt="sample47" height="250px" width="300px" />
+                                <img src="{{ asset($usuario->imagen) }}" height="250px" width="300px" />
                             </div>
                             <figcaption>
                                 <h3>{{ $usuario->name }}</h3>

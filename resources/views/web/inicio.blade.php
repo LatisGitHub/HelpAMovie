@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="{{ asset('css2/font-awesome.css')}}">
 <link rel="stylesheet" href="{{ asset('css2/custom.css') }}">
 <link rel="stylesheet" href="css/font-awesome.min.css">
-<!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet">
 <section id="home" class="main-home parallax-section">

@@ -4,7 +4,7 @@
 @section('main')
     <link rel="stylesheet" href="{{ asset('css2/peliculas.css') }}">
     <div class="container">
-        <div class="form-container mt-3" style="margin-left: 25%">
+        <div class="form-container mt-3" style="margin-left: 25%;margin-top: 10%">
             <form method="POST" action='/pelicula/buscarPelicula' enctype="multipart/form-data">
                 @csrf
                 <label for="plataforma" style="font-weight: bold">PELICULA</label>
@@ -12,7 +12,7 @@
                 <button class="btn btn-dark" type="submit">BUSCAR</button>
             </form>
         </div>
-        <h1 class="text-dark mt-5" style="text-align: center"> PELICULAS </h1>
+        
         <a href="/peliculas/nuevo/nuevo"><button class="btn btn-secondary mb-5">Nueva peli</button></a>
         <div class="row mb-5">
             @foreach ($peliculas as $pelicula)

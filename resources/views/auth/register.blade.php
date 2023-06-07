@@ -58,15 +58,14 @@
                 <option value="Comedy">Comedy</option>
                 <option value="Drama">Drama</option>
                 <option value="Fantasy">Fantasy</option>
-                <option value="Fantasy">Romance</option>
+                <option value="Romance">Romance</option>
             </select>
         </div>
-        
         <div class="mt-4">
             <input type="radio" id="html" name="rol" value="productor">
-            <label for="html">PRODUCER</label><br>
+            <label for="html">Producer</label><br>
             <input type="radio" id="html" name="rol" value="usuario">
-            <label for="html">ACTOR/INVESTOR</label><br>
+            <label for="html">Actor/Investor</label><br>
         </div>
 
         <div class="flex items-center justify-end mt-4">
