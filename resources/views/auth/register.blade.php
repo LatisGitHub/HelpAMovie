@@ -42,13 +42,6 @@
                 autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('descripcion')" class="mt-2" />
         </div>
-
-        <div class="mt-4">
-            <x-input-label for="imagen" :value="__('IMAGEN')" />
-            <input class="block mt-1 w-full" type='file' name='imagen' value=''  />
-            <x-input-error :messages="$errors->get('imagen')" class="mt-2" />
-        </div>
-
         <div class="mt-4">
             <x-input-label for="genero" :value="__('Genre')" />
             <select name="genero" class="block mt-1 w-full">
@@ -62,10 +55,12 @@
             </select>
         </div>
         <div class="mt-4">
-            <input type="radio" id="html" name="rol" value="productor">
+            <input type="radio" id="html" name="rol" value="producer">
             <label for="html">Producer</label><br>
-            <input type="radio" id="html" name="rol" value="usuario">
-            <label for="html">Actor/Investor</label><br>
+            <input type="radio" id="html" name="rol" value="actor">
+            <label for="html">Actor</label><br>
+            <input type="radio" id="html" name="rol" value="investor">
+            <label for="html">Investor</label><br>
         </div>
 
         <div class="flex items-center justify-end mt-4">

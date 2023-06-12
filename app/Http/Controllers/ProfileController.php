@@ -17,15 +17,17 @@ class ProfileController extends Controller
 {
     public function index()
     {   
+        $usuarios = User::where('rol', 'actor')->orWhere('rol', 'producer')->paginate(6);
+
         if (isset(Auth::user()->rol)) {
             if (Auth::user()->rol == 'admin') {
-                return view('admin.usuarios', ['usuarios' => User::paginate(6)]);
+                return view('admin.usuarios', ['usuarios' => $usuarios]);
             } else {
-                return view('web.usuarios', ['usuarios' => User::paginate(6)]);
+                return view('web.usuarios', ['usuarios' => $usuarios]);
             }
         }
         if (isEmpty(Auth::user())) {
-            return view('web.usuarios', ['usuarios' => User::paginate(6)]);
+            return view('web.usuarios', ['usuarios' => $usuarios]);
         }
     }
     /**

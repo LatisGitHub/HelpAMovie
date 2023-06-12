@@ -3,17 +3,17 @@
 
 @section('main')
     <link rel="stylesheet" href="{{ asset('css2/usuarios.css') }}">
-    <nav class="navbar navbar-expand-lg navbar-light " style="border-top: 1px solid rgb(209, 209, 209);border-bottom: 1px solid rgb(209, 209, 209)">
+    <nav class="navbar navbar-expand-lg navbar-light "
+        style="border-top: 1px solid rgb(209, 209, 209);border-bottom: 1px solid rgb(209, 209, 209)">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 73%">
-                <form class="d-flex" method="POST" action='/usuario/buscarUsuario'  enctype="multipart/form-data">
+                <form class="d-flex" method="POST" action='/usuario/buscarUsuario' enctype="multipart/form-data">
                     @csrf
-                    <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
-                        name="usuario">
+                    <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="usuario">
                     <button class="btn btn-outline-secondary" type="submit"><svg xmlns="http://www.w3.org/2000/svg"
                             width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path
@@ -25,27 +25,34 @@
     </nav>
     <div class="container">
         <h1 style="text-decoration: underline" class="mt-5">Our Cast</h1>
-        <h4>Discover a pool of talented and motivated actors ready to embark on new projects and bring characters to life.</h4>
+        <h4>Discover a pool of talented and motivated actors ready to embark on new projects and bring characters to life.
+        </h4>
         <div class="container center-div mt-5">
             <div class="row d-flex justify-content-center align-items-center mb-5">
                 @foreach ($usuarios as $usuario)
                     @if ($usuario->rol != 'admin')
                         <figure class="snip1515 hover-effect">
                             <div class="profile-image">
-                                <img src="{{ asset($usuario->imagen) }}" height="250px" width="300px" />
+                                <img src="{{ asset('storage/users-avatar/' . $usuario->avatar) }}" height="250px"
+                                    width="300px" />
                             </div>
                             <figcaption>
                                 <h3>{{ $usuario->name }}</h3>
-                                <h4>{{ $usuario->rol }}</h4>
+                                <h4>{{ ucfirst($usuario->rol) }}</h4>
                                 <p>{{ $usuario->descripcion }}</p>
                                 <div class="icons">
-                                    <a href="usuarios/{{ $usuario->id }}/agregar">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-patch-plus-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
-                                        </svg>
-                                    </a>
+                                    @php
+                                        $usuarioActual = Auth::user();
+                                        if ($usuarioActual->rol == 'admin' || $usuarioActual->rol == 'producer') {
+                                            echo '<a href="usuarios/' .
+                                                $usuario->id .
+                                                '/agregar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-plus-fill" viewBox="0 0 16 16">
+                                            <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
+                                            </svg>
+                                            </a>';
+                                        }
+                                    @endphp
                                     <a href="/chatify/{{ $usuario->id }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-chat-quote" viewBox="0 0 16 16">
@@ -69,7 +76,9 @@
                         </figure>
                     @endif
                 @endforeach
-                {{ $usuarios->links() }}
+                <div class="custom-pagination">
+                    {{ $usuarios->links() }}
+                </div>
             </div>
         </div>
 

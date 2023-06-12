@@ -18,16 +18,18 @@ class PeliculasController extends Controller
      */
     public function index()
     {
+        $peliculas = pelicula::where('fechaLimite', '>', now())->paginate(6);
         if (isset(Auth::user()->rol)) {
             if (Auth::user()->rol == 'admin') {
-                return view('admin.peliculas', ['peliculas' => pelicula::paginate(4)]);
+                return view('admin.peliculas', ['peliculas' => $peliculas]);
             } else {
-                return view('web.peliculas', ['peliculas' => pelicula::paginate(6)]);
+                return view('web.peliculas', ['peliculas' => $peliculas]);
+
             }
+        } else {
+            return view('web.peliculas', ['peliculas' => $peliculas]);
         }
-        if (isEmpty(Auth::user())) {
-            return view('web.peliculas', ['peliculas' => pelicula::paginate(6)]);
-        }
+
     }
 
     public function inicio()
@@ -52,16 +54,17 @@ class PeliculasController extends Controller
         $pelicula->titulo = $request->input('titulo');
         $pelicula->sinopsis = $request->input('sinopsis');
         $pelicula->genero = $request->input('genero');
+        $pelicula->minutos = $request->input('minutos');
         $pelicula->fechaLimite = $request->input('fechaLimite');
         $pelicula->objetivo = $request->input('objetivo');
+        
 
         $path = $request->file('imagen')->store('public');
         // /public/nombreimagengenerado.jpg
         //Cambiamos public por storage en la BBDD para que se pueda ver la imagen en la web
         $pelicula->imagen =  str_replace('public', 'storage', $path);
         $pelicula->cantidad = '0';
-        $pelicula->likes = '0';
-        $pelicula->dislikes = '0';
+       
         $pelicula->user_id = Auth::user()->id;
 
 
@@ -74,8 +77,8 @@ class PeliculasController extends Controller
     {
         //Sacar todas los peliculas del director logueado
         $peliculas = Pelicula::where('user_id', Auth::user()->id)->get();
-        
-       // var_dump($usuario);
+
+        // var_dump($usuario);
         if (isset(Auth::user()->rol)) {
             if (Auth::user()->rol == 'admin') {
                 return view('admin.formPeliculas', ['peliculas' => $peliculas, 'usuario' => $usuario]);
@@ -88,7 +91,7 @@ class PeliculasController extends Controller
     public function buscarPelicula(Request $request)
     {
         $peliculas = DB::table('peliculas')
-            ->where('titulo', 'like', '%'. $request->input('pelicula') . '%')->paginate(6);
+            ->where('titulo', 'like', '%' . $request->input('pelicula') . '%')->paginate(6);
 
         if (Auth::user()->rol == "admin") {
             return view('admin.peliculas', ['peliculas' => $peliculas]);
@@ -107,8 +110,7 @@ class PeliculasController extends Controller
         $pelicula = Pelicula::where('id', $pelicula_id)->get();
         //$pelicula->usuarios()->attach($usuario->id, ['created_at' => Carbon::now()]);
         $usuario->peliculas()->attach($pelicula_id, ['created_at' => Carbon::now()]);
-        return view('admin.peliculas', ['peliculas' => pelicula::paginate(4)]);
-
+        return redirect('/peliculas');
     }
 
 
@@ -126,11 +128,12 @@ class PeliculasController extends Controller
         }
     }
 
-    public function invertir(Request $request) {
+    public function invertir(Request $request)
+    {
         $pelicula = $request->pelicula;
         $usuario = $request->usuario;
         $cantidad = $request->amount;
-        $pelicula->usuarios()->attach($usuario,$cantidad, ['created_at' => Carbon::now()]);
+        $pelicula->usuarios()->attach($usuario, $cantidad, ['created_at' => Carbon::now()]);
     }
     /**
      * Show the form for editing the specified resource.

@@ -25,6 +25,10 @@
                 </select>
             </div>
             <div>
+                <x-input-label for="minutos" :value="__('DURATION(MINUTES)')" />
+                <input type="number" class="block mt-1 w-full" name="minutos">
+            </div>
+            <div>
                 <x-input-label for="fechaLimite" :value="__('LIMIT DATE')" />
                 <input type="date" class="block mt-1 w-full" name="fechaLimite">
             </div>

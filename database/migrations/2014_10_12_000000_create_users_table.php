@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('imagen')->nullable();
-            $table->enum('genero',['Action','Adventure','ScienceFiction', 'Comedy', 'Drama', 'Fantasy'])->nullable();
+            $table->enum('genero',['Action','Adventure','ScienceFiction', 'Comedy', 'Drama', 'Fantasy', 'Romance'])->nullable();
             $table->string('rol')->default('usuario');
             $table->string('descripcion')->nullable();
             $table->rememberToken();

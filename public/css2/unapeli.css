@@ -1,0 +1,117 @@
+.movie-card {
+    display: flex;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.movie-card__image {
+    flex: 0 0 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.movie-card__image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.movie-card__content {
+    flex: 1;
+    padding: 10px;
+}
+
+.movie-card__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.movie-card__plot {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.movie-card__target,
+.movie-card__amount {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.movie-card__cast-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.movie-card__cast-members {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie-card__cast-member {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.movie-card__form {
+    margin-top: 20px;
+}
+
+.movie-card__label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.movie-card__input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.movie-card__button {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .movie-card {
+        flex-direction: column;
+    }
+
+    .movie-card__image {
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .movie-card__content {
+        flex: 1;
+        padding: 10px;
+    }
+}
+.minutes {
+    display: inline-block;
+    margin-top: 15px;
+    color: #555;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .type {
+    display: inline-block;
+    color: #959595;
+    margin-left: 10px;
+  }

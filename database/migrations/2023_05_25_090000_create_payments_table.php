@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->string('payment_id');
             $table->string('payer_id');
             $table->string('payer_email');
             $table->string('amount', 10, 2);
-            $table->float('payment_id');
             $table->string('currency');
             $table->string('payment_status');
             $table->timestamps();

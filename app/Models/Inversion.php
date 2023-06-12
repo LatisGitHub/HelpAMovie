@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Inversion extends Model
 {
     use HasFactory;
+    protected $table = 'inversiones';
     public $timestamps = false;
 
 }

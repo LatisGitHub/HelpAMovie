@@ -30,8 +30,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $path = $request->file('imagen')->store('public');
-        $imagenUrl = str_replace('public', 'storage', $path);
         //$path = $request->file('imagen')->store('public');
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -43,7 +41,6 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'imagen' => $imagenUrl,
             'genero' => $request->genero,
             'rol' => $request->rol,
             'descripcion' => $request->descripcion

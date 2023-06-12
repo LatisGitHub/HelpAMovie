@@ -48,6 +48,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/usuarios/{usuario}/registrar', [PeliculasController::class, 'registrar']);
     Route::get('/peliculas/{pelicula}', [PeliculasController::class, 'show'])->name('peliculas.show');
     Route::post('pay', [PaymentController::class, 'pay'])->name('payment');
+    Route::get('success', [PaymentController::class, 'success']);
+    Route::get('error', [PaymentController::class, 'error']);
+    Route::get('/factura/pelicula/{pelicula}/inversion/{inversion}/payment/{payment}', [PaymentController::class, 'factura'])->name('factura');
     Route::post('/pelicula/buscarPelicula', [PeliculasController::class, 'buscarPelicula'])->name('buscarPelicula');
     Route::get('/usuarios/{user}', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/usuario/buscarUsuario', [ProfileController::class, 'buscarUsuario'])->name('buscarUsuario');

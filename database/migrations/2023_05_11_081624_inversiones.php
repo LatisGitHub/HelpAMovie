@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('inversiones', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('pelicula_id')->references('id')->on('peliculas')->onDelete('cascade');
             $table->double('cantidad');
-            $table->primary(['user_id', 'pelicula_id']);
+            $table->string('id_pago');
             $table->timestamps();
         });
     }

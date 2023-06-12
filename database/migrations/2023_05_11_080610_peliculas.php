@@ -20,8 +20,7 @@ return new class extends Migration
             $table->double('objetivo');
             $table->string('imagen')->nullable();
             $table->string('cantidad');
-            $table->integer('likes');
-            $table->integer('dislikes');
+            $table->integer('minutos');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
