@@ -14,7 +14,7 @@
                     style="width: 100%; height: auto; border-radius: 10px;">
             </div>
 
-            <div class="movie-card__content">
+            <div class="movie-card__content" >
                 <h5 class="movie-card__title">{{ strtoupper($pelicula->titulo) }}</h5>
                 <span class="minutes">{{ $pelicula->minutos }} min</span>
                 <p class="type" style="color: black"><b>{{ $pelicula->genero }}</b></p>

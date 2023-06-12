@@ -34,11 +34,11 @@
                         <a class="nav-link me-4" href="/usuarios">Profiles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-4" href="/chatify">Contacts</a>
+                        <a class="nav-link me-4" href="/chatify">Chats</a>
                     </li>
                     @auth
                         <a id="login-register-button" class="nav-link me-4" href="/profile"
-                            style="font-weight: 10px;">Profile</a>
+                            style="font-weight: 10px;">You</a>
                     @else
                         <li style="list-style: none">
                             <a id="login-register-button" href="{{ route('login') }}" id="login-register-button">Login</a>

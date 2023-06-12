@@ -15,7 +15,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 66%">
                     <form class="d-flex" method="POST" action='/pelicula/buscarPelicula' enctype="multipart/form-data">
                         @csrf
-                        @if (Auth::user()->rol != 'usuario') 
+                        @if (Auth::user()->rol != 'actor') 
                         <a href="/peliculas/nuevo/nuevo"><svg style="width: 130px; color:#bfba55"
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-plus-square-fill" viewBox="0 0 16 16">
