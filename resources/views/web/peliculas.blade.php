@@ -11,29 +11,29 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-           
-                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 66%">
-                    <form class="d-flex" method="POST" action='/pelicula/buscarPelicula' enctype="multipart/form-data">
-                        @csrf
-                        @if (Auth::user()->rol != 'actor') 
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 66%">
+                <form class="d-flex" method="POST" action='/pelicula/buscarPelicula' enctype="multipart/form-data">
+                    @csrf
+                    @if (Auth::user()->rol != 'actor')
                         <a href="/peliculas/nuevo/nuevo"><svg style="width: 130px; color:#bfba55"
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-plus-square-fill" viewBox="0 0 16 16">
                                 <path
                                     d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
-                            </svg></a> 
-                            @endif
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                            name="pelicula">
-                        <button class="btn btn-outline-secondary" type="submit"><svg xmlns="http://www.w3.org/2000/svg"
-                                width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                            </svg></button>
-                    </form>
-                </div>
-                
-              
+                            </svg></a>
+                    @endif
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        name="pelicula">
+                    <button class="btn btn-outline-secondary" type="submit"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg></button>
+                </form>
+            </div>
+
+
         </div>
     </nav>
     <div class="container">
@@ -61,15 +61,22 @@
                                         {{ $pelicula->sinopsis }}
                                     </p>
                                     <p class="card-text">
+                                        <a href="/peliculas/{{ $pelicula->id }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
+                                                <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                                                <path
+                                                    d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z" />
+                                            </svg>
+                                        </a>
+                                        @if ($pelicula->cantidad >= $pelicula->objetivo)
+                                            | <span style="color: #4d925e;font-weight: bold">
+                                                {{ $pelicula->cantidad }}€</span>/{{ $pelicula->objetivo }}€
+                                        @else
+                                            | <span style="color: #924d4d;font-weight: bold">
+                                                {{ $pelicula->cantidad }}€</span>/{{ $pelicula->objetivo }}€
+                                        @endif
                                     </p>
-                                    <a href="/peliculas/{{ $pelicula->id }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
-                                            <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
-                                            <path
-                                                d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z" />
-                                        </svg>
-                                    </a>
                                 </div>
                             </div>
                         </div>

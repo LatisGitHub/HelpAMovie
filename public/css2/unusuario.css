@@ -1,0 +1,6 @@
+.card-img-top {
+    max-width: 150%;
+    max-height: 400px; /* Cambia el valor según tus necesidades */
+    width: auto;
+    height: auto;
+  }

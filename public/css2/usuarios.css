@@ -89,3 +89,6 @@
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
 }
+.icons a:hover svg {
+  transform: scale(1.2); /* Aumenta el tamaño en un 20% */
+}

@@ -42,7 +42,15 @@ class PeliculasController extends Controller
      */
     public function create()
     {
-        return view('admin.formNuevaPelicula');
+        if (isset(Auth::user()->rol)) {
+            if (Auth::user()->rol == 'admin') {
+                return view('admin.formNuevaPelicula');
+            } else {
+                return view('web.formNuevaPelicula');
+            }
+        } else {
+            return view('web.formNuevaPelicula');
+        }
     }
 
     /**
