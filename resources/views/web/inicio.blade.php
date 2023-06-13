@@ -9,6 +9,8 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css2/basico.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <nav class="navbar navbar-expand-lg navbar-light p-1 " style="font-size: 20px;background-color: white;">
      <div class="container-fluid mt-3">
          <a class="navbar-brand" href="/inicio"
@@ -48,6 +50,7 @@
          </div>
      </div>
  </nav>
+</head>
 <section id="home" class="main-home parallax-section">
      <div class="overlay"></div>
      <div class="container">

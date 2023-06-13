@@ -76,6 +76,11 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    public function destroy2(User $usuario)
+    {
+        $usuario->delete();
+        return redirect('/usuarios');
+    }
 
     public function show(User $user)
     {

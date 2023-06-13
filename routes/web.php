@@ -34,6 +34,7 @@ Route::middleware(['auth', 'rol:admin'])->group(function () {
     Route::get('usuarios/{usuario}/agregar', [PeliculasController::class, 'agregar']);
     Route::get('/peliculas/{pelicula}', [PeliculasController::class, 'show'])->name('peliculas.show');
     Route::get('/peliculas/{pelicula}/borrar', [PeliculasController::class, 'destroy']);
+    Route::get('/usuarios/{usuario}/borrar', [ProfileController::class, 'destroy2']);
 
 });
 Route::middleware('auth')->group(function () {
