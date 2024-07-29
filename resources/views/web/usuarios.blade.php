@@ -33,8 +33,13 @@
                     @if ($usuario->rol != 'admin')
                         <figure class="snip1515 hover-effect">
                             <div class="profile-image">
+                                @if($usuario->avatar == 'avatar.png')
+                                <img src="https://www.linkpicture.com/q/defecto.png" height="250px"
+                                width="300px" />
+                                @else 
                                 <img src="{{ asset('storage/users-avatar/' . $usuario->avatar) }}" height="250px"
-                                    width="300px" />
+                                width="300px" />
+                                @endif
                             </div>
                             <figcaption>
                                 <h3>{{ $usuario->name }}</h3>

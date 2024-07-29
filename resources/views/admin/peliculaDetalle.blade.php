@@ -32,11 +32,21 @@
                                 }
                             @endphp
                             @foreach ($usuarios as $usuario)
-                                <a href="/usuarios/{{ $usuario->id }}" data-tooltip="{{ $usuario->name }}" data-placement="top">
-                                    <img src="{{ asset('storage/users-avatar/' . $usuario->avatar) }}" alt="Actor"
-                                        class="movie-card__cast-member">
-                                </a>
-                            @endforeach
+                            <a href="/usuarios/{{ $usuario->id }}" data-tooltip="{{ $usuario->name }}" data-placement="top">
+                                @if($usuario->avatar == 'avatar.png')
+                                <img src="https://www.linkpicture.com/q/defecto.png" alt="Actor"
+                                class="movie-card__cast-member" />
+                                @else 
+                                <img src="{{ asset('storage/users-avatar/' . $usuario->avatar) }}" alt="Actor"
+                                class="movie-card__cast-member">
+                                @endif
+                            </a>
+                            <a  style="margin-top: -5px" href="/peliculas/{{ $pelicula->id }}/usuarios/{{$usuario->id}}/borrar" width="32" height="32">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+                                  </svg>
+                            </a>
+                        @endforeach
                         </div>
                     </div>
                     <p style="color: black;font-weight: bolder;margin-bottom: -1%">Donate Here</p>

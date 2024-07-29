@@ -136,6 +136,14 @@ class PeliculasController extends Controller
         }
     }
 
+    public function eliminarUsuario(Pelicula $pelicula, User $user)
+    {
+        if ($pelicula->usuarios()->where('user_id', $user->id)->get()->count() == 1)
+            $pelicula->usuarios()->detach($user->id);
+
+        return redirect('peliculas/' . $pelicula->id);
+    }
+
     public function invertir(Request $request)
     {
         $pelicula = $request->pelicula;

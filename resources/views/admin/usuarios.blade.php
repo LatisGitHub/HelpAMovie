@@ -48,8 +48,13 @@
                                 <p style="font-weight: bold">{{ strtoupper($usuario->name) }}</p>
                             </td>
                             <td>
-                                <img class="img-responsive" width="200px"
-                                    src="{{ asset('storage/users-avatar/' . $usuario->avatar) }}" />
+                                @if($usuario->avatar == 'avatar.png')
+                                <img class="img-responsive" src="https://www.linkpicture.com/q/defecto.png"
+                                width="200px" />
+                                @else 
+                                <img class="img-responsive"  src="{{ asset('storage/users-avatar/' . $usuario->avatar) }}"
+                                width="200px" />
+                                @endif
                             </td>
                             <td>
                                 <p><b>{{ $usuario->email }}</b></p>
